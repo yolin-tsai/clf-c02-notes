@@ -1,0 +1,141 @@
+/* ============================================================
+   Claude 風格主題 for VitePress
+   純白背景 + Claude 橘點綴，全部對比 ≥ AA
+   ============================================================ */
+
+:root {
+  /* ── Brand 橘（注意語意分工）──────────────────────────────
+     brand-1 = 連結／側欄選中／nav 的「文字色」→ 必須夠深才讀得到
+     brand-2 = hover 時更深一階
+     brand-3 = 按鈕底色 / Hero 名稱 → 可以用鮮亮的 Claude 橘
+     brand-soft = 半透明底（badge、提示框）                      */
+  --vp-c-brand-1: #B0532E;   /* 深 terracotta，白底約 5.5:1，讀得清楚 */
+  --vp-c-brand-2: #94431F;   /* hover 更深 */
+  --vp-c-brand-3: #D97757;   /* Claude 招牌橘，按鈕底色用 */
+  --vp-c-brand-soft: rgba(217, 119, 87, 0.14);
+
+  /* ── 純白背景 ────────────────────────────────────────── */
+  --vp-c-bg:      #FFFFFF;   /* 主背景：純白 */
+  --vp-c-bg-alt:  #F5F5F5;   /* nav / sidebar / footer */
+  --vp-c-bg-soft: #F5F5F5;   /* 卡片底、引用塊 */
+  --vp-c-bg-mute: #EEEEEE;   /* 更深一階 */
+  --vp-c-bg-elv:  #FFFFFF;   /* 浮起元素 */
+
+  /* ── 文字（高對比）────────────────────────────────────── */
+  --vp-c-text-1: #1A1A1A;    /* 內文：近黑，對比約 16:1 */
+  --vp-c-text-2: #616161;    /* 次要文字 */
+  --vp-c-text-3: #9E9E9E;    /* 註解 / placeholder */
+
+  /* ── 邊框 / 分隔線（中性灰）──────────────────────────── */
+  --vp-c-border:  #E0E0E0;
+  --vp-c-divider: #E8E8E8;
+  --vp-c-gutter:  #E8E8E8;
+
+  /* ── Hero 名稱：鮮亮漸層（大字，安全）───────────────────── */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(135deg, #D97757 20%, #C2410C);
+}
+
+/* ── 深色模式：暖色 Claude 夜間，連結用「亮橘」才讀得到 ──────── */
+.dark {
+  --vp-c-brand-1: #E8A07E;   /* 深底上要用亮橘 */
+  --vp-c-brand-2: #DC8A66;
+  --vp-c-brand-3: #D97757;
+  --vp-c-brand-soft: rgba(217, 119, 87, 0.18);
+
+  --vp-c-bg:      #1F1E1C;   /* 暖黑 */
+  --vp-c-bg-alt:  #191816;
+  --vp-c-bg-soft: #262421;
+  --vp-c-bg-mute: #2D2A26;
+  --vp-c-bg-elv:  #262421;
+
+  --vp-c-text-1: #ECE9E3;
+  --vp-c-text-2: #B4AEA3;
+  --vp-c-text-3: #807A6F;
+
+  --vp-c-border:  #3A3733;
+  --vp-c-divider: #322F2B;
+  --vp-c-gutter:  #322F2B;
+
+  --vp-home-hero-name-background: -webkit-linear-gradient(135deg, #E8A07E 20%, #D97757);
+}
+
+/* ─── 側欄選中項（現在 brand-1 夠深，讀得清楚）────────────── */
+.VPSidebarItem.is-active > .item .VPLink,
+.VPSidebarItem.is-active > .item .text {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600;
+}
+
+/* ─── Nav 連結 hover / active ──────────────────────────────── */
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* ─── 首頁特色卡：白卡 + 暖邊框，hover 才亮橘 ───────────────── */
+.VPFeature {
+  background-color: var(--vp-c-bg-elv) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  box-shadow: none !important;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-3) !important;
+  box-shadow: 0 4px 16px rgba(217, 119, 87, 0.14) !important;
+  transform: translateY(-2px);
+}
+
+/* ─── 主要按鈕：亮橘底 + 白字（大字，對比足夠）──────────────── */
+.VPButton.brand {
+  background-color: var(--vp-c-brand-3) !important;
+  border-color: var(--vp-c-brand-3) !important;
+  color: #ffffff !important;
+}
+.VPButton.brand:hover {
+  background-color: #C2624A !important;
+  border-color: #C2624A !important;
+}
+
+/* ─── 次要（alt）按鈕：米底 + 橘字 ─────────────────────────── */
+.VPButton.alt {
+  background-color: var(--vp-c-bg-soft) !important;
+  border-color: var(--vp-c-border) !important;
+  color: var(--vp-c-text-1) !important;
+}
+.VPButton.alt:hover {
+  border-color: var(--vp-c-brand-3) !important;
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* ─── 內文連結：深橘可讀，hover 更深 ──────────────────────── */
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-underline-offset: 2px;
+}
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* ─── 行內 code：暖底，跟整體色系一致 ─────────────────────── */
+.vp-doc :not(pre) > code {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+/* ─── 上一章 / 下一章：使用一般文字色，不套用品牌橘 ────────── */
+.VPDocFooter .pager-link .title {
+  color: var(--vp-c-text-1) !important;
+}
+.VPDocFooter .pager-link:hover .title {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* ─── 表格標題列：淡米底，分隔更清楚（你的筆記表格很多）────── */
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+.vp-doc th {
+  background-color: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
+}
