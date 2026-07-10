@@ -4,8 +4,6 @@ AWS Certified Cloud Practitioner（CLF-C02）中文考試筆記。
 
 **線上閱讀：** https://yolin-tsai.github.io/clf-c02-notes/
 
----
-
 ## 這是什麼
 
 一套涵蓋 CLF-C02 全部考試範圍的繁體中文筆記，適合：
@@ -13,23 +11,6 @@ AWS Certified Cloud Practitioner（CLF-C02）中文考試筆記。
 - 準備考 AWS Cloud Practitioner，想要一份中文、好讀、能直接拿去應考的教材
 - 已經有點基礎，想快速釐清「這題該選哪個服務」的人
 - 非本科背景、需要從觀念開始建立雲端全貌的初學者
-
----
-
-## 官方參考資料
-
-- [CLF-C02 考試指南（PDF，繁中）](https://docs.aws.amazon.com/zh_tw/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.pdf) — 考試範圍、領域占比、題型說明
-
----
-
-## 內容時效與免責聲明
-
-- 這是個人學習筆記，非 AWS 官方教材；如與官方考試指南不一致，以官方為準。
-- AWS 服務與政策持續變動，筆記內以 † 標出的時效性內容均以標註當下的公開資訊為準；正式應考前建議再對照 AWS 官方文件確認最新狀態。
-- 內容最後更新：2026 年 7 月。
-- 發現錯誤、過時資訊或有建議，歡迎開 [Issue](https://github.com/yolin-tsai/clf-c02-notes/issues)。
-
----
 
 ## 章節目錄
 
@@ -74,3 +55,13 @@ npm install
 npm run dev    # http://localhost:5173
 npm run build  # 輸出至 docs/.vitepress/dist/
 ```
+## 官方參考資料
+
+- [CLF-C02 考試指南（PDF）](https://docs.aws.amazon.com/zh_tw/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.pdf) — 考試範圍、領域占比、題型說明
+
+## 內容時效與免責聲明
+
+- 這是個人學習筆記，非 AWS 官方教材；如與官方考試指南不一致，以官方為準。
+- AWS 服務與政策持續變動，筆記內以 † 標出的時效性內容均以標註當下的公開資訊為準；正式應考前建議再對照 AWS 官方文件確認最新狀態。
+- 內容最後更新：2026 年 7 月。
+- 發現錯誤、過時資訊或有建議，歡迎開 [Issue](https://github.com/yolin-tsai/clf-c02-notes/issues)。
