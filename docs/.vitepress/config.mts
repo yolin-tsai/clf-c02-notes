@@ -72,7 +72,6 @@ export default defineConfig({
       text: '最後更新',
       formatOptions: {
         dateStyle: 'short',
-        timeStyle: 'short',
       },
     },
 
