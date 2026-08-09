@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'AWS CLF-C02 考試筆記',
   description: 'AWS Cloud Practitioner 完整考試筆記，對應 AWS Skill Builder 官方課程 13 個模組',
   base: '/clf-c02-notes/',
@@ -23,7 +24,7 @@ export default defineConfig({
             { text: 'SQS 與 SNS', link: '/clf-c02/3' },
             { text: '無伺服器運算：Lambda 與 Step Functions', link: '/clf-c02/4' },
             { text: '容器：ECS、EKS、Fargate 與 ECR', link: '/clf-c02/5' },
-            { text: '其他運算服務與選型', link: '/clf-c02/6' },
+            { text: '其他運算服務', link: '/clf-c02/6' },
           ],
         },
         {
@@ -88,4 +89,4 @@ export default defineConfig({
     sidebarMenuLabel: '目錄',
     returnToTopLabel: '回到頂部',
   },
-})
+}))

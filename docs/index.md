@@ -51,7 +51,7 @@ hero:
 | [3](/clf-c02/3) | 訊息與佇列：SQS、SNS 與 EventBridge |
 | [4](/clf-c02/4) | 無伺服器運算：Lambda 與 Step Functions |
 | [5](/clf-c02/5) | 容器：ECS、EKS、Fargate 與 ECR |
-| [6](/clf-c02/6) | 其他運算服務與選型 |
+| [6](/clf-c02/6) | 其他運算服務 |
 | [7](/clf-c02/7) | 走向全球：Region 選擇、多 AZ 可靠性與 IaC |
 | [8](/clf-c02/8) | 雲端網路：VPC、連線與內容傳遞 |
 | [9](/clf-c02/9) | 雲端儲存：S3、EBS、EFS 與 FSx |
