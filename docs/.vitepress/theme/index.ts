@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
+import awsIcons from './aws-icons.json'
 import './style.css'
 
 export default {
@@ -10,10 +11,7 @@ export default {
         mermaid.registerIconPacks([
           {
             name: 'aws',
-            loader: () =>
-              fetch(
-                'https://raw.githubusercontent.com/harmalh/aws-mermaid-icons/main/iconify-json/aws-icons.json'
-              ).then((res) => res.json()),
+            loader: () => Promise.resolve(awsIcons),
           },
         ])
       })

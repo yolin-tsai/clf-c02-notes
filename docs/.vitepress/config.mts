@@ -7,6 +7,12 @@ export default withMermaid(defineConfig({
   base: '/clf-c02-notes/',
   lang: 'zh-TW',
 
+  vite: {
+    optimizeDeps: {
+      include: ['cytoscape-fcose', 'cytoscape'],
+    },
+  },
+
   themeConfig: {
     nav: [
       { text: '首頁', link: '/' },
