@@ -2,7 +2,7 @@
 
 AWS Certified Cloud Practitioner（CLF-C02）中文考試筆記。
 
-**線上閱讀：** https://yolin-tsai.github.io/clf-c02-notes/
+**線上閱讀：** <!-- TODO: 部署完成後換成 CloudFront 網址或自訂網域 -->
 
 ## 這是什麼
 
@@ -55,6 +55,29 @@ npm install
 npm run dev    # http://localhost:5173
 npm run build  # 輸出至 docs/.vitepress/dist/
 ```
+
+## 部署（AWS S3 + CloudFront）
+
+GitHub 只放原始碼；網站由 AWS 建置與託管，資源皆在 Console 手動建立（region：`us-east-1`）。
+
+```
+push 到 main ──▶ CodePipeline ──▶ CodeBuild（buildspec.yml：npm run build → s3 sync → invalidation）
+                                         │
+讀者 ──▶ （Route 53）──▶ CloudFront（OAC） ──▶ S3（私有 bucket）
+```
+
+| 元件 | 設定重點 |
+|---|---|
+| S3 | 私有 bucket，Block all public access 保持開啟，不開 Static website hosting |
+| CloudFront | Origin 用 OAC 連 S3；Redirect HTTP to HTTPS；Default root object `index.html`；403/404 → `/404.html`（回應碼 404） |
+| CloudFront Function | Viewer request 綁 `url-rewrite`，把 `/clf-c02/1` 改寫為 `/clf-c02/1.html` |
+| CodePipeline | Source：GitHub (via GitHub App)、分支 `main`、Output artifact format 選 **Full clone**；跳過 Deploy stage |
+| CodeBuild | 讀 repo 根目錄的 `buildspec.yml`；環境變數 `SITE_BUCKET`、`DISTRIBUTION_ID` |
+| CodeBuild IAM role | 額外允許：S3 `ListBucket` / `GetObject` / `PutObject` / `DeleteObject`、`cloudfront:CreateInvalidation`、`codeconnections:UseConnection` |
+| Route 53 + ACM（選用） | 自訂網域；ACM 憑證必須在 us-east-1 |
+
+push 到 `main` 即自動部署。建議在 AWS Budgets 設預算警示。
+
 ## 官方參考資料
 
 - [CLF-C02 考試指南（PDF）](https://docs.aws.amazon.com/zh_tw/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.pdf) — 考試範圍、領域占比、題型說明

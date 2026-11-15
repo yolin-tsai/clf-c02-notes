@@ -4,7 +4,9 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 export default withMermaid(defineConfig({
   title: 'AWS CLF-C02 考試筆記',
   description: 'AWS Cloud Practitioner 完整考試筆記，對應 AWS Skill Builder 官方課程 13 個模組',
-  base: '/clf-c02-notes/',
+  // 部署路徑：預設為根目錄 '/'（S3 + CloudFront）。
+  // 若要掛在子路徑（例如 example.com/clf-c02-notes/），建置時設定 BASE_PATH=/clf-c02-notes/
+  base: process.env.BASE_PATH || '/',
   lang: 'zh-TW',
 
   vite: {

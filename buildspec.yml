@@ -1,0 +1,20 @@
+# CodeBuild：建置 VitePress 並部署到 S3 + CloudFront（由 CodePipeline 在 push 到 main 時觸發）
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+    commands:
+      - npm ci
+  build:
+    commands:
+      - npm run build
+      # 1) 先上傳帶 hash 的靜態資源（長快取），舊 HTML 引用的檔案此時仍在
+      - aws s3 sync docs/.vitepress/dist/assets "s3://$SITE_BUCKET/assets" --cache-control "public,max-age=31536000,immutable"
+      # 2) 再上傳 HTML 等其餘檔案（每次都向 CloudFront 確認），並刪除已不存在的頁面
+      - aws s3 sync docs/.vitepress/dist "s3://$SITE_BUCKET" --delete --exclude "assets/*" --cache-control "public,max-age=0,must-revalidate"
+      # 3) 最後清掉舊版資源
+      - aws s3 sync docs/.vitepress/dist/assets "s3://$SITE_BUCKET/assets" --delete --cache-control "public,max-age=31536000,immutable"
+      # 4) 清除 CloudFront 快取（"/*" 只算 1 個路徑，每月前 1,000 個免費）
+      - aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"
