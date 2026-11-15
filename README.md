@@ -2,8 +2,6 @@
 
 AWS Certified Cloud Practitioner（CLF-C02）中文考試筆記。
 
-**線上閱讀：** https://yolin-tsai.github.io/clf-c02-notes/
-
 ## 這是什麼
 
 一套涵蓋 CLF-C02 全部考試範圍的繁體中文筆記，適合：
