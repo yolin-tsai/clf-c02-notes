@@ -30,3 +30,6 @@ yarn-error.log*
 # Lock files (keep one, ignore others)
 yarn.lock
 pnpm-lock.yaml
+
+# Claude Code
+CLAUDE.md

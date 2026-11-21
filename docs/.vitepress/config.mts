@@ -12,6 +12,7 @@ export default withMermaid(defineConfig({
   vite: {
     optimizeDeps: {
       include: ['cytoscape-fcose', 'cytoscape'],
+      exclude: ['mermaid'],
     },
   },
 
